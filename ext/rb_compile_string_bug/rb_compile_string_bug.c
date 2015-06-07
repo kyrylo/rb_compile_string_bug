@@ -8,10 +8,10 @@ mRbCompileStringBug_rb_compile_string(VALUE self)
     return self;
 }
 
-
 void Init_rb_compile_string_bug(void)
 {
     VALUE rb_cRbCompileStringBug = rb_define_class("RbCompileStringBug", rb_cObject);
+
     rb_define_singleton_method(rb_cRbCompileStringBug, "rb_compile_string",
 			       mRbCompileStringBug_rb_compile_string, 0);
 }
