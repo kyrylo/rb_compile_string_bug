@@ -1,0 +1,4 @@
+```
+rake compile
+rake bug
+```
