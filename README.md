@@ -1,6 +1,7 @@
 What to do.
 
 ```
+bundle
 rake compile
 rake bug
 ```
