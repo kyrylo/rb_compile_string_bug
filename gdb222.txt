@@ -1,0 +1,41 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+[New Thread 0x7ffff7ff7700 (LWP 27645)]
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff6ec5616 in malloc_usable_size () from /usr/lib/libc.so.6
+(gdb) bt
+#0  0x00007ffff6ec5616 in malloc_usable_size () from /usr/lib/libc.so.6
+#1  0x000055555559e8a6 in objspace_malloc_size (objspace=<optimized out>, hint=<optimized out>, ptr=<optimized out>) at gc.c:7216
+#2  objspace_xfree (old_size=<optimized out>, ptr=<optimized out>, objspace=<optimized out>) at gc.c:7415
+#3  ruby_sized_xfree (size=<optimized out>, x=<optimized out>) at gc.c:7506
+#4  ruby_xfree (x=0xa22294547) at gc.c:7513
+#5  0x000055555574e99f in vtable_free (tbl=0x555555c23080) at parse.y:163
+#6  local_pop_gen (parser=parser@entry=0x555555f1d0a0) at parse.y:10056
+#7  0x0000555555764768 in ruby_yyparse (parser=parser@entry=0x555555f1d0a0) at parse.y:3038
+#8  0x0000555555767a33 in yycompile0 (arg=arg@entry=93825002492064) at parse.y:5514
+#9  0x00005555556d9784 in rb_suppress_tracing (func=func@entry=0x555555767950 <yycompile0>, arg=arg@entry=93825002492064) at vm_trace.c:406
+#10 0x0000555555755f8f in yycompile (line=1, fname=<optimized out>, parser=0x555555f1d0a0) at parse.y:5547
+#11 parser_compile_string (line=1, s=93825001439520, fname=<optimized out>, vparser=<optimized out>) at parse.y:5615
+#12 rb_compile_string (f=<optimized out>, s=93825001439520, line=1) at parse.y:5625
+#13 0x00007ffff6386891 in mRbCompileStringBug_rb_compile_string (self=93825001849480) at ../../../../ext/rb_compile_string_bug/rb_compile_string_bug.c:7
+#14 0x00005555556b7ec7 in vm_call_cfunc_with_frame (ci=<optimized out>, reg_cfp=0x7ffff7faded0, th=0x555555a465f0) at vm_insnhelper.c:1382
+#15 vm_call_cfunc (th=<optimized out>, reg_cfp=0x7ffff7faded0, ci=<optimized out>) at vm_insnhelper.c:1475
+#16 0x00005555556bc46d in vm_exec_core (th=th@entry=0x555555a465f0, initial=initial@entry=0) at insns.def:1054
+#17 0x00005555556c0be8 in vm_exec (th=th@entry=0x555555a465f0) at vm.c:1400
+#18 0x00005555556cf692 in invoke_block_from_c (splattable=1, defined_class=8, cref=0x0, blockptr=0x0, argv=0x7fffffffd8b8, argc=1, self=93824997842040, block=0x7ffff7fadf90,
+    th=0x555555a465f0) at vm.c:813
+#19 vm_yield (argv=0x7fffffffd8b8, argc=1, th=0x555555a465f0) at vm.c:853
+#20 rb_yield_0 (argv=0x7fffffffd8b8, argc=1) at vm_eval.c:987
+#21 rb_yield (val=val@entry=16615) at vm_eval.c:997
+#22 0x00005555555d4bde in int_dotimes (num=2000001) at numeric.c:3864
+#23 0x00005555556b7ec7 in vm_call_cfunc_with_frame (ci=<optimized out>, reg_cfp=0x7ffff7fadf70, th=0x555555a465f0) at vm_insnhelper.c:1382
+#24 vm_call_cfunc (th=th@entry=0x555555a465f0, reg_cfp=reg_cfp@entry=0x7ffff7fadf70, ci=ci@entry=0x555555c7a048) at vm_insnhelper.c:1475
+#25 0x00005555556c6c5e in vm_call_method (th=0x555555a465f0, cfp=0x7ffff7fadf70, ci=0x555555c7a048) at vm_insnhelper.c:1691
+#26 0x00005555556bc3b7 in vm_exec_core (th=th@entry=0x555555a465f0, initial=initial@entry=0) at insns.def:1024
+#27 0x00005555556c0be8 in vm_exec (th=th@entry=0x555555a465f0) at vm.c:1400
+#28 0x00005555556cfe43 in rb_iseq_eval_main (iseqval=iseqval@entry=93825001850720) at vm.c:1670
+#29 0x000055555557724f in ruby_exec_internal (n=0x555555e80760) at eval.c:252
+#30 0x000055555557adef in ruby_exec_node (n=0x555555e80760) at eval.c:317
+#31 ruby_run_node (n=<optimized out>) at eval.c:309
+#32 0x0000555555576ddb in main (argc=3, argv=0x7fffffffe298) at main.c:36

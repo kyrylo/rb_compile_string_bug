@@ -1,20 +1,5 @@
-What to do.
+With -O3 (default)
 
-```
-rake compile
-rake bug
-```
-
-Ruby compiled with default flags segfaults.
-
-```
-ruby -v
-ruby 2.2.2p95 (2015-04-13 revision 50295) [x86_64-linux]
-```
-
-Produces this:
-
-```
 ~/code/rb_compile_string_bug[master]% rake bug
 bug.rb:3: [BUG] Segmentation fault at 0x00072500000027
 ruby 2.2.2p95 (2015-04-13 revision 50295) [x86_64-linux]
@@ -171,4 +156,3 @@ Bug reports are welcome.
 For details: http://www.ruby-lang.org/bugreport.html
 
 ~/code/rb_compile_string_bug[master]%
-```
