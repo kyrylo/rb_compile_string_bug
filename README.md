@@ -1,3 +1,7 @@
+This is a repo to demonstrate a bug filed here:
+
+[https://bugs.ruby-lang.org/issues/11232](https://bugs.ruby-lang.org/issues/11232)
+
 What to do.
 
 ```
