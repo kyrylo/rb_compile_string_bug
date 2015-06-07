@@ -3,7 +3,7 @@ What to do.
 ```
 bundle
 rake compile
-rake bug
+ruby bug.rb
 ```
 
 If Ruby is compiled with default flags `bug.rb` segfaults.
@@ -18,3 +18,9 @@ Segfaults with: [segfault](/segfault222.txt)
 GDB output: [gdb](/gdb222.txt)
 
 If Ruby is compiled with `-O0 -g`, then `bug.rb` doesn't segfault.
+
+When the GC is disabled, it works as supposed to. To test:
+
+```
+ruby nobug.rb
+```
